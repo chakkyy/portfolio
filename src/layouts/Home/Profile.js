@@ -17,20 +17,37 @@ import styles from './Profile.module.css';
 
 const ProfileText = ({ visible, titleId }) => (
   <Fragment>
-    <Heading className={styles.title} data-visible={visible} level={3} id={titleId}>
+    <Heading
+      className={styles.title}
+      data-visible={visible}
+      level={3}
+      id={titleId}
+    >
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I’m Carlos, currently I live in Buenos Aires working as a Software Engineer at{' '}
-      <Link href="https://www.litebox.ai">Litebox</Link> I’m a natural problem solver, a
-      dynamic and ambitious person, searching always for things to challenge myself and
-      never stop growing. If you’re interested in the tools and software I use check out
-      my <Link href="/uses">uses page</Link>.
+    <Text
+      className={styles.description}
+      data-visible={visible}
+      size="l"
+      as="p"
+    >
+      I’m Carlos, currently I live in Buenos Aires working as a
+      Software Engineer at{' '}
+      <Link href="https://www.litebox.ai">Litebox</Link> I’m a natural
+      problem solver, a dynamic and ambitious person, searching always
+      for things to challenge myself and never stop growing. If you’re
+      interested in the tools and software I use check out my{' '}
+      <Link href="/uses">uses page</Link>.
     </Text>
-    <Text className={styles.description} data-visible={visible} size="l" as="p">
-      In my spare time I like to practice Mixed Martial Arts, do some running/cycling and
-      play video games. I’m always down for hearing about new projects, so feel free to
-      drop me a message.
+    <Text
+      className={styles.description}
+      data-visible={visible}
+      size="l"
+      as="p"
+    >
+      In my spare time I like to practice Mixed Martial Arts, do some
+      running/cycling and play video games. I’m always down for
+      hearing about new projects, so feel free to drop me a message.
     </Text>
   </Fragment>
 );
@@ -51,7 +68,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
       tabIndex={-1}
     >
       <Transition in={visible || focused} timeout={0}>
-        {visible => (
+        {(visible) => (
           <div className={styles.content}>
             <div className={styles.column}>
               <ProfileText visible={visible} titleId={titleId} />
@@ -73,6 +90,15 @@ export const Profile = ({ id, visible, sectionRef }) => {
               >
                 Contact me on LinkedIn
               </Button>
+              <Button
+                secondary
+                className={styles.button}
+                data-visible={visible}
+                href="https://cramirezresume.super.site/"
+                icon="send"
+              >
+                Check my resume
+              </Button>
             </div>
             <div className={styles.column}>
               <div className={styles.tag} aria-hidden>
@@ -82,7 +108,10 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapsed={!visible}
                   collapseDelay={1000}
                 />
-                <div className={styles.tagText} data-visible={visible}>
+                <div
+                  className={styles.tagText}
+                  data-visible={visible}
+                >
                   About Me
                 </div>
               </div>
@@ -92,12 +121,12 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   delay={100}
                   placeholder={profileImgPlaceholder}
                   srcSet={[profileImg, profileImgLarge]}
-                  sizes={`(max-width: ${media.mobile}px) 100vw, 480px`}
+                  sizes={`(max-width: ${media.mobile}px) 100vw,480px`}
                   alt="Me standing in front of the Torii on Miyajima, an island off the coast of Hiroshima in Japan"
                 />
                 <svg
                   aria-hidden="true"
-                  width="135"
+                  width="95"
                   height="765"
                   viewBox="0 0 135 765"
                   className={styles.svg}

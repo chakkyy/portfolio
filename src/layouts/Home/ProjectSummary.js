@@ -13,7 +13,9 @@ import { useState } from 'react';
 import { cssProps, media } from 'utils/style';
 import styles from './ProjectSummary.module.css';
 
-const Model = dynamic(() => import('components/Model').then(mod => mod.Model));
+const Model = dynamic(() =>
+  import('components/Model').then((mod) => mod.Model)
+);
 
 export const ProjectSummary = ({
   id,
@@ -54,7 +56,7 @@ export const ProjectSummary = ({
     </svg>
   );
 
-  const renderDetails = visible => (
+  const renderDetails = (visible) => (
     <div className={styles.details}>
       <div aria-hidden className={styles.index}>
         <Divider
@@ -76,7 +78,11 @@ export const ProjectSummary = ({
       >
         {title}
       </Heading>
-      <Text className={styles.description} data-visible={visible} as="p">
+      <Text
+        className={styles.description}
+        data-visible={visible}
+        as="p"
+      >
         {description}
       </Text>
       <div className={styles.button} data-visible={visible}>
@@ -87,7 +93,7 @@ export const ProjectSummary = ({
     </div>
   );
 
-  const renderPreview = visible => (
+  const renderPreview = (visible) => (
     <div className={styles.preview}>
       {model.type === 'laptop' && (
         <>
@@ -161,7 +167,7 @@ export const ProjectSummary = ({
     >
       <div className={styles.content}>
         <Transition in={sectionVisible || focused}>
-          {visible => (
+          {(visible) => (
             <>
               {!alternate && !isMobile && (
                 <>

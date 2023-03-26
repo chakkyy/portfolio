@@ -2,16 +2,25 @@ import Head from 'next/head';
 
 const siteUrl = process.env.NEXT_PUBLIC_WEBSITE_URL;
 const name = 'Carlos Ramirez';
-const twitterHandle = '@chakkycardozo';
+const twitterHandle = '@chakkyjs';
 const defaultOgImage = `${siteUrl}/social-image.png`;
 
-export const Meta = ({ title, description, prefix = name, ogImage = defaultOgImage }) => {
+export const Meta = ({
+  title,
+  description,
+  prefix = name,
+  ogImage = defaultOgImage,
+}) => {
   const titleText = [prefix, title].filter(Boolean).join(' | ');
 
   return (
     <Head>
       <title key="title">{titleText}</title>
-      <meta key="description" name="description" content={description} />
+      <meta
+        key="description"
+        name="description"
+        content={description}
+      />
       <meta name="author" content={name} />
 
       <meta property="og:image" content={ogImage} />

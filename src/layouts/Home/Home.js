@@ -1,28 +1,34 @@
-import doit2Large from "assets/doit2Large.jpg";
-import gamestackTexture2Placeholder from "assets/gamestack-list-placeholder.jpg";
-import doit2 from "assets/doit2.jpg";
-import doitLarge from "assets/doitLarge.jpg";
-import gamestackTexturePlaceholder from "assets/gamestack-login-placeholder.jpg";
-import doit from "assets/doit.jpg";
-import henryLarge from "assets/henryLarge.jpg";
-import sliceTexturePlaceholder from "assets/slice-app-placeholder.jpg";
-import henry from "assets/henry.jpg";
-import liteboxLarge from "assets/liteboxLarge.jpg";
-import sprTexturePlaceholder from "assets/spr-lesson-builder-dark-placeholder.jpg";
-import litebox from "assets/litebox.jpg";
-import { Footer } from "components/Footer";
-import { Meta } from "components/Meta";
-import { Intro } from "layouts/Home/Intro";
-import { Profile } from "layouts/Home/Profile";
-import { ProjectSummary } from "layouts/Home/ProjectSummary";
-import { useEffect, useRef, useState } from "react";
-import styles from "./Home.module.css";
+import tigris2Large from 'assets/tigris2Large.jpg';
+import gamestackTexture2Placeholder from 'assets/gamestack-list-placeholder.jpg';
+import tigris2 from 'assets/tigris2.jpg';
+import tigrisLarge from 'assets/tigrisLarge.jpg';
+import gamestackTexturePlaceholder from 'assets/gamestack-login-placeholder.jpg';
+import tigris from 'assets/tigris.jpg';
+import motherduckLarge from 'assets/motherduckLarge.jpg';
+import sliceTexturePlaceholder from 'assets/slice-app-placeholder.jpg';
+import motherduck from 'assets/motherduck.jpg';
+import diagridLarge from 'assets/diagridLarge.jpg';
+import sprTexturePlaceholder from 'assets/spr-lesson-builder-dark-placeholder.jpg';
+import diagrid from 'assets/diagrid.jpg';
+import { Footer } from 'components/Footer';
+import { Meta } from 'components/Meta';
+import { Intro } from 'layouts/Home/Intro';
+import { Profile } from 'layouts/Home/Profile';
+import { ProjectSummary } from 'layouts/Home/ProjectSummary';
+import { useEffect, useRef, useState } from 'react';
+import styles from './Home.module.css';
 
-const disciplines = ["Designer", "Photographer", "Animator", "Prototyper"];
+const disciplines = [
+  'Designer',
+  'Photographer',
+  'Animator',
+  'Prototyper',
+];
 
 export const Home = () => {
   const [visibleSections, setVisibleSections] = useState([]);
-  const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
+  const [scrollIndicatorHidden, setScrollIndicatorHidden] =
+    useState(false);
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
@@ -30,7 +36,13 @@ export const Home = () => {
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [
+      intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      details,
+    ];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -39,18 +51,21 @@ export const Home = () => {
             const section = entry.target;
             observer.unobserve(section);
             if (visibleSections.includes(section)) return;
-            setVisibleSections((prevSections) => [...prevSections, section]);
+            setVisibleSections((prevSections) => [
+              ...prevSections,
+              section,
+            ]);
           }
         });
       },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
     );
 
     const indicatorObserver = new IntersectionObserver(
       ([entry]) => {
         setScrollIndicatorHidden(!entry.isIntersecting);
       },
-      { rootMargin: "-100% 0px 0px 0px" }
+      { rootMargin: '-100% 0px 0px 0px' }
     );
 
     sections.forEach((section) => {
@@ -68,8 +83,8 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Frontend Developer"
-        description="Frontend portfolio of Carlos Ramirez — a software developer working on web & mobile
+        title="Creative Technologist"
+        description="Portfolio of Carlos Ramirez — a software developer working on web & mobile
           apps with a focus on motion, experience design, and accessibility."
       />
       <Intro
@@ -79,65 +94,65 @@ export const Home = () => {
         scrollIndicatorHidden={scrollIndicatorHidden}
       />
       <ProjectSummary
-        id="workexp-1"
+        id="project-1"
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Litebox"
-        description="Working as Software Engineer in a boutique online agency where growth is energized by our principles of innovation and rooted in our passion for quality and originality —so you can take on the world. "
+        title="Diagrid"
+        description="Marketing site for Diagrid, a cloud-native platform that simplifies distributed systems problems and boosts developer productivity. With tools and APIs for building resilient services, Diagrid enables seamless access to cloud resources and empowers developers to build amazing applications with ease."
         buttonText="View website"
-        buttonLink="https://www.litebox.ai"
+        buttonLink="https://www.diagrid.io"
         model={{
-          type: "laptop",
-          alt: "Coming soon website builder",
+          type: 'laptop',
+          alt: 'Diagrid marketing site',
           textures: [
             {
-              srcSet: [litebox, liteboxLarge],
+              srcSet: [diagrid, diagridLarge],
               placeholder: sprTexturePlaceholder,
             },
           ],
         }}
       />
       <ProjectSummary
-        id="workexp-2"
+        id="project-2"
         alternate
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Poincenot Technology Studio"
-        description="Worked as mobile developer full-time on a fintech software factory, redefining banking UX across all channels."
+        title="Tigris Data"
+        description="Marketing site for Tigris, a code-first developer data platform that empowers building rich applications that perform consistently at any scale. With an integrated suite of database and data services, Tigris simplifies development and enables developers to focus on their code, leading to better user experiences."
         buttonText="View website"
-        buttonLink="https://poincenot.com/do-it/"
+        buttonLink="https://tigrisdata.com/"
         model={{
-          type: "phone",
-          alt: "App login screen",
+          type: 'phone',
+          alt: 'Tigris Data Marketing Site',
           textures: [
             {
-              srcSet: [doit, doitLarge],
+              srcSet: [tigris, tigrisLarge],
               placeholder: gamestackTexturePlaceholder,
             },
             {
-              srcSet: [doit2, doit2Large],
+              srcSet: [tigris2, tigris2Large],
               placeholder: gamestackTexture2Placeholder,
             },
           ],
         }}
       />
       <ProjectSummary
-        id="workexp-3"
+        id="project-3"
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="SoyHenry Teaching Assistant"
-        description="Guided students through the bootcamp. Helping them to work together and understand core concepts providing extracurricular projects to reinforce knowledge and practices to test students level before bootcamp test."
+        title="MotherDuck"
+        description="Marketing site and Blog for Motherduck, a serverless data analytics platform that makes analytics fun, frictionless and ducking awesome. Built in collaboration with the folks at DuckDB Labs, Motherduck is based on DuckDB and offers an easy-to-use suite of data analytics tools."
         buttonText="View website"
-        buttonLink="https://www.soyhenry.com/"
+        buttonLink="https://www.motherduck.com/"
         model={{
-          type: "laptop",
-          alt: "Teaching assistant in soyHenry bootcamp",
+          type: 'laptop',
+          alt: 'Motherduck marketing site',
           textures: [
             {
-              srcSet: [henry, henryLarge],
+              srcSet: [motherduck, motherduckLarge],
               placeholder: sliceTexturePlaceholder,
             },
           ],

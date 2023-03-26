@@ -15,17 +15,28 @@ import { cssProps } from 'utils/style';
 import styles from './Intro.module.css';
 
 const DisplacementSphere = dynamic(() =>
-  import('layouts/Home/DisplacementSphere').then(mod => mod.DisplacementSphere)
+  import('layouts/Home/DisplacementSphere').then(
+    (mod) => mod.DisplacementSphere
+  )
 );
 
-export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...rest }) {
+export function Intro({
+  id,
+  sectionRef,
+  disciplines,
+  scrollIndicatorHidden,
+  ...rest
+}) {
   const theme = useTheme();
   const [disciplineIndex, setDisciplineIndex] = useState(0);
   const prevTheme = usePrevious(theme);
-  const introLabel = [disciplines.slice(0, -1).join(', '), disciplines.slice(-1)[0]].join(
-    ', and '
+  const introLabel = [
+    disciplines.slice(0, -1).join(', '),
+    disciplines.slice(-1)[0],
+  ].join(', and ');
+  const currentDiscipline = disciplines.find(
+    (item, index) => index === disciplineIndex
   );
-  const currentDiscipline = disciplines.find((item, index) => index === disciplineIndex);
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
 
@@ -44,7 +55,7 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
     }
   }, [theme.themeId, prevTheme]);
 
-  const handleScrollClick = event => {
+  const handleScrollClick = (event) => {
     event.preventDefault();
     scrollToHash(event.currentTarget.href);
   };
@@ -64,7 +75,11 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
           <Fragment>
             <DisplacementSphere />
             <header className={styles.text}>
-              <h1 className={styles.name} data-visible={visible} id={titleId}>
+              <h1
+                className={styles.name}
+                data-visible={visible}
+                id={titleId}
+              >
                 <DecoderText text="Carlos Ramirez" delay={300} />
               </h1>
               <Heading level={0} as="h2" className={styles.title}>
@@ -75,15 +90,20 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                   <span
                     className={styles.word}
                     data-status={status}
-                    style={cssProps({ delay: tokens.base.durationXS })}
+                    style={cssProps({
+                      delay: tokens.base.durationXS,
+                    })}
                   >
                     Developer
                   </span>
-                  <span className={styles.line} data-status={status} />
+                  <span
+                    className={styles.line}
+                    data-status={status}
+                  />
                 </span>
                 <div className={styles.row} component="span">
                   <AnimatePresence>
-                    {disciplines.map(item => (
+                    {disciplines.map((item) => (
                       <Transition
                         unmount
                         in={item === currentDiscipline}
@@ -96,7 +116,9 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                             className={styles.word}
                             data-plus={true}
                             data-status={status}
-                            style={cssProps({ delay: tokens.base.durationL })}
+                            style={cssProps({
+                              delay: tokens.base.durationL,
+                            })}
                           >
                             {item}
                           </span>
@@ -107,7 +129,7 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                 </div>
               </Heading>
             </header>
-            <RouterLink href="/#workexp-1">
+            <RouterLink href="/#project-1">
               <a
                 className={styles.scrollIndicator}
                 data-status={status}
@@ -117,7 +139,7 @@ export function Intro({ id, sectionRef, disciplines, scrollIndicatorHidden, ...r
                 <VisuallyHidden>Scroll to projects</VisuallyHidden>
               </a>
             </RouterLink>
-            <RouterLink href="/#workexp-1">
+            <RouterLink href="/#project-1">
               <a
                 className={styles.mobileScrollIndicator}
                 data-status={status}

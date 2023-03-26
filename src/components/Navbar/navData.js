@@ -1,22 +1,22 @@
 export const navLinks = [
   {
+    label: 'Projects',
+    pathname: '/#project-1',
+  },
+  {
     label: 'Articles',
     pathname: '/articles',
   },
   {
-    label: 'Details',
+    label: 'About',
     pathname: '/#profile-detail',
-  },
-  {
-    label: 'Experience',
-    pathname: '/#workexp-1',
   },
 ];
 
 export const socialLinks = [
   {
     label: 'Twitter',
-    url: 'https://twitter.com/chakkycardozo',
+    url: 'https://twitter.com/chakkyjs',
     icon: 'twitter',
   },
   {
