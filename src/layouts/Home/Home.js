@@ -21,7 +21,7 @@ import styles from './Home.module.css';
 const disciplines = [
   'Designer',
   'Photographer',
-  'Animator',
+  'Creator',
   'Prototyper',
 ];
 
