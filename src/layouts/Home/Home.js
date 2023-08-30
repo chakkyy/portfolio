@@ -20,9 +20,9 @@ import styles from './Home.module.css';
 
 const disciplines = [
   'Designer',
-  'Photographer',
-  'Creator',
-  'Prototyper',
+  'UX Engineer',
+  'DevOps',
+  'Filmmaker',
 ];
 
 export const Home = () => {
@@ -83,7 +83,7 @@ export const Home = () => {
   return (
     <div className={styles.home}>
       <Meta
-        title="Creative Technologist"
+        title="Software Engineer"
         description="Portfolio of Carlos Ramirez — a software developer working on web & mobile
           apps with a focus on motion, experience design, and accessibility."
       />
