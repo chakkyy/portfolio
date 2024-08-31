@@ -4,6 +4,7 @@ import GothamBookItalic from 'assets/fonts/gotham-book-italic.woff2';
 import GothamBook from 'assets/fonts/gotham-book.woff2';
 import GothamMediumItalic from 'assets/fonts/gotham-medium-italic.woff2';
 import GothamMedium from 'assets/fonts/gotham-medium.woff2';
+import IPAGothic from 'assets/fonts/ipa-gothic.woff2';
 import { useHasMounted } from 'hooks';
 import Head from 'next/head';
 import { createContext, useEffect } from 'react';
@@ -39,7 +40,10 @@ export const ThemeProvider = ({
       {isRootProvider && (
         <>
           <Head>
-            <meta name="theme-color" content={`rgb(${currentTheme.rgbBackground})`} />
+            <meta
+              name="theme-color"
+              content={`rgb(${currentTheme.rgbBackground})`}
+            />
           </Head>
           {children}
         </>
@@ -71,8 +75,8 @@ export function squish(styles) {
 export function createThemeProperties(theme) {
   return squish(
     Object.keys(theme)
-      .filter(key => key !== 'themeId')
-      .map(key => `--${key}: ${theme[key]};`)
+      .filter((key) => key !== 'themeId')
+      .map((key) => `--${key}: ${theme[key]};`)
       .join('\n\n')
   );
 }
@@ -98,7 +102,7 @@ export function createThemeStyleObject(theme) {
 export function createMediaTokenProperties() {
   return squish(
     Object.keys(media)
-      .map(key => {
+      .map((key) => {
         return `
         @media (max-width: ${media[key]}px) {
           :root {
@@ -174,5 +178,13 @@ export const fontStyles = squish(`
     src: url(${GothamBoldItalic}) format('woff2');
     font-display: block;
     font-style: italic;
+  }
+    
+    @font-face {
+    font-family: IPA Gothic;
+    font-weight: 400;
+    src: url(${IPAGothic}) format('woff2');
+    font-display: block;
+    font-style: normal;
   }
 `);
