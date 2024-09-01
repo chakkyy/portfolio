@@ -11,9 +11,14 @@ import rehypeSlug from 'rehype-slug';
 import { POSTS_PATH, postFilePaths } from 'utils/mdx';
 import { formatTimecode } from 'utils/timecode';
 import rehypePrism from '@mapbox/rehype-prism';
-import { generateOgImage } from './og-image';
+// import { generateOgImage } from './og-image';
 
-export default function PostPage({ frontmatter, code, timecode, ogImage }) {
+export default function PostPage({
+  frontmatter,
+  code,
+  timecode,
+  ogImage,
+}) {
   const MDXComponent = useMemo(() => getMDXComponent(code), [code]);
 
   return (
@@ -46,23 +51,29 @@ export const getStaticProps = async ({ params }) => {
   const { time } = readingTime(matter.content);
   const timecode = formatTimecode(time);
 
-  const ogImage = await generateOgImage({
-    title: frontmatter.title,
-    date: frontmatter.date,
-    banner: frontmatter.banner,
-    timecode,
-  });
+  // const ogImage = await generateOgImage({
+  //   title: frontmatter.title,
+  //   date: frontmatter.date,
+  //   banner: frontmatter.banner,
+  //   timecode,
+  // });
 
   return {
-    props: { code, frontmatter, timecode, ogImage },
-    notFound: process.env.NODE_ENV === 'production' && frontmatter.draft,
+    props: {
+      code,
+      frontmatter,
+      timecode,
+      //,ogImage
+    },
+    notFound:
+      process.env.NODE_ENV === 'production' && frontmatter.draft,
   };
 };
 
 export const getStaticPaths = async () => {
   const paths = postFilePaths
-    .map(filePath => filePath.replace(/\.mdx?$/, ''))
-    .map(slug => ({ params: { slug } }));
+    .map((filePath) => filePath.replace(/\.mdx?$/, ''))
+    .map((slug) => ({ params: { slug } }));
 
   return {
     paths,
